@@ -1,22 +1,3 @@
-// import React from "react";
-
-// const Home = () => {
-//   return (
-//     <>
-//       <div className="text-white bg-black h-screen w-screen flex flex-col justify-center items-center text-2xl">
-//         <h1 className="text-4xl m-2">
-//           Welcome to ShopSmart
-//         </h1>
-//         <p>
-//           Discover Products That Fit Your Life – All in One Place
-//         </p>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Home;
-
 import React from "react";
 import { Link } from "react-router-dom";
 
