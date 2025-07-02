@@ -3,16 +3,34 @@ import { Link } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const api = "https://fakestoreapi.com/products/";
     fetch(api)
       .then((res) => res.json())
-      .then((resData) => setProducts(resData));
+      .then((resData) => {
+        setProducts(resData);
+        setLoading(false); 
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        setLoading(false);
+      });
   }, []);
 
+  // Shows when fetching api data
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center text-indigo-600 justify-center text-2xl font-extrabold">
+        Loading...
+      </div>
+    );
+  }
+
   return (
-    <section className="min-h-screen bg-gradient-to-br from-indigo-100 to-white py-20 px-4">
+    <>
+    <section className="min-h-screen bg-gray-100 py-20 px-4">
       <h1 className="text-3xl font-bold text-center text-indigo-600 mb-10">
         Our Products
       </h1>
@@ -28,22 +46,19 @@ const Products = () => {
               alt={product.title}
               className="h-40 object-contain mb-4 mx-auto"
             />
-
             <h2 className="text-sm font-semibold text-gray-800 mb-2 truncate">
               {product.title}
             </h2>
-
-            <p className="text-indigo-600 font-bold mb-2">{"\u20B9"}{product.price}</p>
-
+            <p className="text-indigo-600 font-bold mb-2">₹ {product.price}</p>
             <div className="flex justify-between gap-2 mt-auto">
               <Link
-                to='/description'
+                to="/"
                 className="bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 px-3 py-1 rounded"
               >
                 Description
               </Link>
               <Link
-                to="/buyNow"
+                to="/"
                 className="bg-indigo-600 hover:bg-indigo-700 text-sm text-white px-3 py-1 rounded"
               >
                 Buy Now
@@ -53,6 +68,7 @@ const Products = () => {
         ))}
       </div>
     </section>
+    </>
   );
 };
 
