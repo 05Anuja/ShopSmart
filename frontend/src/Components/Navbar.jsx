@@ -17,9 +17,9 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
           <li><Link to="/" className="hover:text-indigo-600 transition">HOME</Link></li>
+          <li><Link to="/products" className="hover:text-indigo-600 transition">PRODUCTS</Link></li>
           <li><Link to="/about" className="hover:text-indigo-600 transition">ABOUT</Link></li>
           <li><Link to="/services" className="hover:text-indigo-600 transition">SERVICES</Link></li>
-          <li><Link to="/products" className="hover:text-indigo-600 transition">PRODUCTS</Link></li>
           <li><Link to="/contact" className="hover:text-indigo-600 transition">CONTACT</Link></li>
           <li><Link to="/signIn" className="hover:text-indigo-600 transition">SIGN IN</Link></li>
         </ul>
@@ -36,9 +36,9 @@ const Navbar = () => {
       {isOpen && (
         <ul className="md:hidden flex flex-col gap-4 mt-4 px-4 text-gray-700 font-medium">
           <li><Link to="/" onClick={toggleMenu}>HOME</Link></li>
+          <li><Link to="/products" onClick={toggleMenu}>PRODUCTS</Link></li>
           <li><Link to="/about" onClick={toggleMenu}>ABOUT</Link></li>
           <li><Link to="/services" onClick={toggleMenu}>SERVICES</Link></li>
-          <li><Link to="/products" onClick={toggleMenu}>PRODUCTS</Link></li>
           <li><Link to="/contact" onClick={toggleMenu}>CONTACT</Link></li>
           <li><Link to="/signIn" onClick={toggleMenu}>SIGN IN</Link></li>
         </ul>
