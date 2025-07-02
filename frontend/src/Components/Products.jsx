@@ -37,13 +37,13 @@ const Products = () => {
 
             <div className="flex justify-between gap-2 mt-auto">
               <Link
-                to="/"
+                to='/description'
                 className="bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 px-3 py-1 rounded"
               >
                 Description
               </Link>
               <Link
-                to="/"
+                to="/buyNow"
                 className="bg-indigo-600 hover:bg-indigo-700 text-sm text-white px-3 py-1 rounded"
               >
                 Buy Now
