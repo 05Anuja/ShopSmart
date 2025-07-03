@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import About from "./About";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -19,6 +18,10 @@ const Products = () => {
         setLoading(false);
       });
   }, []);
+
+  const cartHandler = () => {
+    alert("Product has been added to Cart")
+  }
 
   // Shows when fetching api data
   if (loading) {
@@ -55,10 +58,11 @@ const Products = () => {
               </p>
               <div className="flex justify-between gap-2 mt-auto">
                 <Link
-                  to="/"
+                  to="/products"
                   className="bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 px-3 py-1 rounded"
+                  onClick={cartHandler}
                 >
-                  Description
+                  Add to Cart
                 </Link>
                 <Link
                   to="/"
@@ -71,7 +75,6 @@ const Products = () => {
           ))}
         </div>
       </section>
-      <About />
     </>
   );
 };

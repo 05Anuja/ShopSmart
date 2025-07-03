@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Products from "./Products";
+import About from "./About";
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
         </div>
       </div>
       <Products />
+      <About />
     </>
   );
 };
