@@ -16,12 +16,12 @@ const Home = () => {
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
-          <Link to="/products">
+          <Link to="/explore">
             <button className="bg-indigo-600 text-white px-6 py-3 rounded-full shadow hover:bg-indigo-700 transition">
               Explore Products
             </button>
           </Link>
-          <Link to="/about">
+          <Link to="/learnMore">
             <button className="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-full hover:bg-indigo-50 transition">
               Learn More
             </button>
