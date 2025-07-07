@@ -1,11 +1,9 @@
 import React from "react";
 import {
-  BrowserRouter,
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
-  Routes,
 } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
@@ -19,8 +17,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
-      <Route path="explore" element={<Products />}/>
-      <Route path="learnMore" element={<About />}/>
+      <Route path="explore" element={<Products />} />
+      <Route path="learnMore" element={<About />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="services" element={<Services />} />
