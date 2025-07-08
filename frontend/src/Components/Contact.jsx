@@ -6,7 +6,7 @@ const Contact = () => {
       <div className="max-w-xl mx-auto bg-white shadow-lg rounded-xl px-8 py-12">
         <h2 className="text-4xl font-bold text-center text-indigo-600 mb-2">Contact Us</h2>
         <p className="text-center text-gray-500 leading-relaxed mb-10">
-          Got a question, feedback or just want to say hello? We’d love to hear from you!
+          Got a question, feedback or just want to say hello? We'd love to hear from you!
         </p>
 
         <form className="space-y-6">
