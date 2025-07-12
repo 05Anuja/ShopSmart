@@ -6,6 +6,13 @@ const AddToCart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
+  const removeFromCartHandler = (item) => {
+    const confirmRemove = window.confirm("Are you sure want delete the product?");
+    if (confirmRemove) {
+      dispatch(removeFromCart(item));
+    }
+  }
+
   return (
     <section className="min-h-screen bg-gradient-to-br from-indigo-50 to-white py-20 px-4">
       <div className="max-w-5xl mx-auto">
@@ -37,11 +44,16 @@ const AddToCart = () => {
                   <p className="text-indigo-600 font-medium text-lg">
                     ₹{item.price}
                   </p>
-                  <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
+                  <p className="text-sm text-gray-500">
+                    Quantity: {item.quantity}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Total Price: {item.price * item.quantity}
+                  </p>
                 </div>
 
                 <button
-                  onClick={() => dispatch(removeFromCart(item.id))}
+                  onClick={() => removeFromCartHandler(item.id)}
                   className="mt-4 sm:mt-0 sm:ml-6 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition"
                 >
                   Remove

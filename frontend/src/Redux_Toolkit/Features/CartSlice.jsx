@@ -7,7 +7,8 @@ const CartSlice = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            const existingProduct = state.items.find((item) => item.id === action.payload);
+            const product = action.payload;
+            const existingProduct = state.items.find((item) => item.id === product.id);
 
             if (existingProduct) {
                 existingProduct.quantity += 1;
@@ -16,7 +17,7 @@ const CartSlice = createSlice({
             }
         },
         removeFromCart: (state, action) => {
-            state.items.filter((item) => item.id !== action.payload)
+            state.items = state.items.filter((item) => item.id !== action.payload)
         },
         clearCart: (state) => {
             state.items = [];

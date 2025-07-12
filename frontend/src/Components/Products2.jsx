@@ -8,6 +8,7 @@ const Products2 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items, loading, error } = useSelector((state) => state.products);
+  const cartItems = useSelector((state) => state.cart.items);
 
   // const cartHandler = () => {
   //   dispatch(addToCart(product));
@@ -63,10 +64,23 @@ const Products2 = () => {
                 <Link
                   to="/add-to-cart"
                   className="bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 px-3 py-1 rounded"
+                  // onClick={() => {
+                  //   const isAlreadyAdded = cartItems.some(
+                  //     (item) => item.id === product.id
+                  //   );
+
+                  //   if (isAlreadyAdded) {
+                  //     alert("This product is already in the cart.");
+                  //   } else {
+                  //     dispatch(addToCart(product));
+                  //     navigate("/add-to-cart");
+                  //     alert("Product has been added to Cart");
+                  //   }
+                  // }}
                   onClick={() => {
                     dispatch(addToCart(product));
                     navigate("/add-to-cart");
-                    alert("Product has been added to Cart");
+                    alert("Product has been added to cart")
                   }}
                 >
                   Add to Cart
