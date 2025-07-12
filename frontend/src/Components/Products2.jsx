@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../Redux_Toolkit/Features/ProductsSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { addToCart } from "../Redux_Toolkit/Features/CartSlice";
 
 const Products2 = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { items, loading, error } = useSelector((state) => state.products);
 
-  const cartHandler = () => {
-    alert("Product has been added to Cart")
-  }
+  // const cartHandler = () => {
+  //   dispatch(addToCart(product));
+  //   navigate('/add-to-cart');
+  //   alert("Product has been added to Cart");
+  // }
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -57,9 +61,13 @@ const Products2 = () => {
               </p>
               <div className="flex justify-between gap-2 mt-auto">
                 <Link
-                  to="/products"
+                  to="/add-to-cart"
                   className="bg-gray-200 hover:bg-gray-300 text-sm text-gray-800 px-3 py-1 rounded"
-                  onClick={cartHandler}
+                  onClick={() => {
+                    dispatch(addToCart(product));
+                    navigate("/add-to-cart");
+                    alert("Product has been added to Cart");
+                  }}
                 >
                   Add to Cart
                 </Link>

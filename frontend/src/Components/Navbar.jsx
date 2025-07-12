@@ -53,7 +53,7 @@ const Navbar = () => {
 
         {/* Icons (Desktop) */}
         <div className="hidden md:flex items-center gap-10">
-          <Link to="/cart" className="text-gray-700 hover:text-indigo-600">
+          <Link to="/add-to-cart" className="text-gray-700 hover:text-indigo-600">
             <ShoppingCart className="w-7 h-7" />
           </Link>
           <Link to="/signin" className="text-gray-700 hover:text-indigo-600">
@@ -85,7 +85,7 @@ const Navbar = () => {
             <Link to="/contact" onClick={toggleMenu}>CONTACT</Link>
           </li>
           <li>
-            <Link to="/cart" onClick={toggleMenu} className="flex items-center gap-2">
+            <Link to="/add-to-cart" onClick={toggleMenu} className="flex items-center gap-2">
               <ShoppingCart className="w-5 h-5" /> Cart
             </Link>
           </li>

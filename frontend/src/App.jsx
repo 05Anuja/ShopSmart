@@ -12,6 +12,7 @@ import Products from "./Components/Products";
 import RootLayout from "./Components/RootLayout";
 import PageNotFound from "./Components/PageNotFound";
 import Products2 from "./Components/Products2";
+import AddToCart from "./Components/AddToCart";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="products" element={<Products2 />} />
+      <Route path="add-to-cart" element={<AddToCart/>} />
       <Route path="*" element={<PageNotFound />} />
     </Route>
   )
