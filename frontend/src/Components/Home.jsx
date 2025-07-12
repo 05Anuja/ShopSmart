@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Products from "./Products";
 import About from "./About";
+import Products2 from "./Products2";
 
 const Home = () => {
   return (
@@ -29,7 +29,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      <Products />
+      <Products2 />
       <About />
     </>
   );
