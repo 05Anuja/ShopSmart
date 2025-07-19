@@ -4,6 +4,7 @@ import { fetchProducts } from "../Redux_Toolkit/Features/ProductsSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { addToCart } from "../Redux_Toolkit/Features/CartSlice";
 import StarRating from "./StarRating";
+import CreateProduct from "./ProductDetails/CreateProduct";
 
 const Products2 = () => {
   const dispatch = useDispatch();
@@ -61,10 +62,10 @@ const Products2 = () => {
               <p className="text-indigo-600 font-bold mb-2">
                 ₹ {product.price}
               </p>
-              <p className="text-indigo-600 font-bold mb-2">
+              <div className="text-indigo-600 font-bold mb-2">
                 <StarRating rating={product.rating.rate}/>
                 <span>{product.rating.rate}</span>
-              </p>
+              </div>
               <div className="flex justify-between gap-2 mt-auto">
                 <Link
                   to="/add-to-cart"
@@ -91,7 +92,7 @@ const Products2 = () => {
                   Add to Cart
                 </Link>
                 <Link
-                  to="/"
+                  to={`/products/${product.id}`}
                   className="bg-indigo-600 hover:bg-indigo-700 text-sm text-white px-3 py-1 rounded"
                 >
                   Product Details

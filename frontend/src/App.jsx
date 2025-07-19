@@ -13,6 +13,8 @@ import RootLayout from "./Components/RootLayout";
 import PageNotFound from "./Components/PageNotFound";
 import Products2 from "./Components/Products2";
 import AddToCart from "./Components/AddToCart";
+import CreateProduct from "./Components/ProductDetails/CreateProduct";
+import ShowProduct from "./Components/ProductDetails/ShowProducts";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +25,9 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="products" element={<Products2 />} />
+      <Route path="products/:id" element={<CreateProduct>
+        <ShowProduct />
+      </CreateProduct>}/>
       <Route path="add-to-cart" element={<AddToCart/>} />
       <Route path="*" element={<PageNotFound />} />
     </Route>
@@ -32,6 +37,7 @@ const router = createBrowserRouter(
 const App = () => {
   return (
     <>
+    <CreateProduct />
       <RouterProvider router={router} />
     </>
   );

@@ -1,14 +1,17 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../Redux_Toolkit/Features/CartSlice";
-import emptyCart from '../Images/Empty_Cart.png';
+import emptyCart from "../Images/Empty_Cart.png";
+import { Link } from "react-router-dom";
 
 const AddToCart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
   const removeFromCartHandler = (itemId) => {
-    const confirmRemove = window.confirm("Are you sure you want to delete this product?");
+    const confirmRemove = window.confirm(
+      "Are you sure you want to delete this product?"
+    );
     if (confirmRemove) {
       dispatch(removeFromCart(itemId));
     }
@@ -23,12 +26,16 @@ const AddToCart = () => {
 
         {cartItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center text-center">
-            <img
-              src={emptyCart}
-              alt="Empty Cart"
-              className="w-80 mb-6" 
-            />
-            <p className="text-xl text-gray-600">Your cart is currently empty.</p>
+            <img src={emptyCart} alt="Empty Cart" className="w-80 mb-6" />
+            <p className="text-xl text-gray-600">
+              Your cart is currently empty.
+            </p>
+            <Link
+              to="/products"
+              className="inline-block px-6 py-3 mt-8 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition"
+            >
+              Return to Shop
+            </Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -50,7 +57,9 @@ const AddToCart = () => {
                   <p className="text-indigo-600 font-semibold text-lg mb-1">
                     ₹{item.price}
                   </p>
-                  <p className="text-sm text-gray-500 mb-1">Quantity: {item.quantity}</p>
+                  <p className="text-sm text-gray-500 mb-1">
+                    Quantity: {item.quantity}
+                  </p>
                   <p className="text-sm text-gray-500">
                     Total: ₹{(item.price * item.quantity).toFixed(2)}
                   </p>
