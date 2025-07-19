@@ -71,6 +71,14 @@ const ShowProduct = () => {
           </div>
         </div>
       </div>
+      <div className="text-center content-center">
+        <Link
+          to="/products"
+          className="inline-block px-6 py-3 mt-8 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition"
+        >
+          Return to Products
+        </Link>
+      </div>
     </section>
   );
 };
