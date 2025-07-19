@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../Redux_Toolkit/Features/ProductsSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { addToCart } from "../Redux_Toolkit/Features/CartSlice";
+import StarRating from "./StarRating";
 
 const Products2 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items, loading, error } = useSelector((state) => state.products);
-  const cartItems = useSelector((state) => state.cart.items);
+  // const cartItems = useSelector((state) => state.cart.items);
 
   // const cartHandler = () => {
   //   dispatch(addToCart(product));
@@ -60,6 +61,10 @@ const Products2 = () => {
               <p className="text-indigo-600 font-bold mb-2">
                 ₹ {product.price}
               </p>
+              <p className="text-indigo-600 font-bold mb-2">
+                <StarRating rating={product.rating.rate}/>
+                <span>{product.rating.rate}</span>
+              </p>
               <div className="flex justify-between gap-2 mt-auto">
                 <Link
                   to="/add-to-cart"
@@ -89,7 +94,7 @@ const Products2 = () => {
                   to="/"
                   className="bg-indigo-600 hover:bg-indigo-700 text-sm text-white px-3 py-1 rounded"
                 >
-                  Buy Now
+                  Product Details
                 </Link>
               </div>
             </div>
