@@ -1,7 +1,7 @@
 import React, { useEffect, useState, createContext } from "react";
 import { useParams } from "react-router-dom";
 
-export const CreateProducts = createContext();
+export const ProductsContext = createContext();
 
 const CreateProduct = ({ children }) => {
   const { id } = useParams();
@@ -28,9 +28,9 @@ const CreateProduct = ({ children }) => {
   }, [id]);
 
   return (
-    <CreateProducts.Provider value={{ product, loading, error }}>
+    <ProductsContext.Provider value={{ product, loading, error }}>
       {children}
-    </CreateProducts.Provider>
+    </ProductsContext.Provider>
   );
 };
 
