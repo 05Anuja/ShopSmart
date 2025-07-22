@@ -15,6 +15,7 @@ import Products2 from "./Components/Products2";
 import AddToCart from "./Components/AddToCart";
 import CreateProduct from "./Components/ProductDetails/CreateProduct";
 import ShowProduct from "./Components/ProductDetails/ShowProducts";
+import UserInfo from "./Components/UserInfo/UserInfo";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
         <ShowProduct />
       </CreateProduct>}/>
       <Route path="add-to-cart" element={<AddToCart/>} />
+      <Route path="signin" element={<UserInfo />}/>
       <Route path="*" element={<PageNotFound />} />
     </Route>
   )
@@ -37,7 +39,6 @@ const router = createBrowserRouter(
 const App = () => {
   return (
     <>
-    <CreateProduct />
       <RouterProvider router={router} />
     </>
   );
