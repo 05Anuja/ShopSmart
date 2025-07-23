@@ -1,22 +1,34 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, ShoppingCart, User, X } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Menu, ShoppingCart, User, X, LogOut } from "lucide-react";
+import { logout } from "../Redux_Toolkit/Features/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, isLoggedIn } = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    alert("User is Logged Out!");
+    navigate("/");
+  };
+
   return (
     <nav className="bg-white shadow-md p-4 fixed top-0 left-0 w-full z-10">
-      <div className="max-w-7xl mx-5 flex justify-between items-center px-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
         {/* Logo */}
         <div className="text-2xl font-bold text-indigo-600">
           <Link to="/">ShopSmart</Link>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-15 text-gray-700 font-medium">
+        <ul className="hidden md:flex gap-10 text-gray-700 font-medium">
           <li>
             <Link
               to="/"
@@ -56,9 +68,21 @@ const Navbar = () => {
           <Link to="/add-to-cart" className="text-gray-700 hover:text-indigo-600">
             <ShoppingCart className="w-7 h-7" />
           </Link>
-          <Link to="/signin" className="text-gray-700 hover:text-indigo-600">
-            <User className="w-7 h-7" />
-          </Link>
+
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="text-gray-700 hover:text-red-600"
+              title={`Logout ${user?.username}`}
+              aria-label="Logout"
+            >
+              <LogOut className="w-7 h-7" />
+            </button>
+          ) : (
+            <Link to="/signin" className="text-gray-700 hover:text-indigo-600">
+              <User className="w-7 h-7" />
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -89,11 +113,29 @@ const Navbar = () => {
               <ShoppingCart className="w-5 h-5" /> Cart
             </Link>
           </li>
-          <li>
-            <Link to="/signin" onClick={toggleMenu} className="flex items-center gap-2">
-              <User className="w-5 h-5" /> Sign In
-            </Link>
-          </li>
+          {isLoggedIn ? (
+            <li>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  toggleMenu();
+                }}
+                className="flex items-center gap-2 text-red-600"
+              >
+                <LogOut className="w-5 h-5" /> Logout
+              </button>
+            </li>
+          ) : (
+            <li>
+              <Link
+                to="/signin"
+                onClick={toggleMenu}
+                className="flex items-center gap-2"
+              >
+                <User className="w-5 h-5" /> Sign In
+              </Link>
+            </li>
+          )}
         </ul>
       )}
     </nav>

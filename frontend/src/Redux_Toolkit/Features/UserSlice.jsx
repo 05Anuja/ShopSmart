@@ -43,6 +43,7 @@ const UserSlice = createSlice({
         logout: (state) => {
             state.user = null;
             state.error = null;
+            state.isLoggedIn = false;
         },
     }
 })

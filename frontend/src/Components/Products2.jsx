@@ -10,13 +10,20 @@ const Products2 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items, loading, error } = useSelector((state) => state.products);
+  const user = useSelector((state) => state.user);
+  // console.log(user);
   // const cartItems = useSelector((state) => state.cart.items);
 
-  // const cartHandler = () => {
-  //   dispatch(addToCart(product));
-  //   navigate('/add-to-cart');
-  //   alert("Product has been added to Cart");
-  // }
+  const cartHandler = (product) => {
+    if (!user.isLoggedIn) {
+      alert("User is not logged in. Please Login!");
+      navigate("/signin");
+    } else {
+      dispatch(addToCart(product));
+      navigate("/add-to-cart");
+      alert("Product has been added to cart");
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -63,7 +70,7 @@ const Products2 = () => {
                 ₹ {product.price}
               </p>
               <div className="text-indigo-600 font-bold mb-2">
-                <StarRating rating={product.rating.rate}/>
+                <StarRating rating={product.rating.rate} />
                 <span>{product.rating.rate}</span>
               </div>
               <div className="flex justify-between gap-2 mt-auto">
@@ -83,10 +90,14 @@ const Products2 = () => {
                   //     alert("Product has been added to Cart");
                   //   }
                   // }}
-                  onClick={() => {
-                    dispatch(addToCart(product));
-                    navigate("/add-to-cart");
-                    alert("Product has been added to cart")
+                  // onClick={() => {
+                  //   dispatch(addToCart(product));
+                  //   navigate("/add-to-cart");
+                  //   alert("Product has been added to cart");
+                  // }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    cartHandler(product);
                   }}
                 >
                   Add to Cart
